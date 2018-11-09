@@ -1,10 +1,11 @@
 package id.kaliagung.translator;
 import java.util.HashMap;
+import java.util.ArrayList;
 public class XATranslator{
 	private String x;
 	private String in;
 	private StringBuilder out;
-	private StringBuilder y;
+	private ArrayList<String> y;
 	private String t;
 	private int c;
 	private HashMap<String, String> AB = new HashMap();
@@ -68,11 +69,12 @@ public class XATranslator{
 	//Translate mode 2 step 1
 	public String translate(String p, boolean r) {
 		out = new StringBuilder();
-		y = new StringBuilder();
-		if(p!= null && x.length() >= 0)
-			if(p.trim().length() >= 0)
-				if (r) t(BA, p);
-				else t(AB, p);
+		y = new ArrayList<>();
+		if(p!= null && x != null)
+			if(x.length() >= 0)
+				if(p.trim().length() >= 0)
+					if (r) t(BA, p);
+					else t(AB, p);
 		System.gc();
 		return out.toString();
     }
@@ -82,8 +84,8 @@ public class XATranslator{
 		else return AB.size()/3;
 	}
 	//Get all fail translation words
-	public String collectNewWord(){
-		return y.toString();
+	public ArrayList<String> collectNewWord(){
+		return (y);
 	}
 	/*  LOADING DICTIONARY  */
 	//Step 2 Check/Confirming before adding to hasmap
@@ -130,8 +132,7 @@ public class XATranslator{
     }
 	//Step 4 Listing untranslated words
 	private void o(HashMap<String, String> h, String k){
-		if(k.trim().length() >= 0 && y.indexOf(";" + k.toLowerCase().trim() + ";") < 0)
-			y.append(k.trim().toLowerCase() + ";");
+			y.add(k.trim().toLowerCase());
 	}
 	//Step 5 Skip a/few/many/lot of letter that not listed in prepare() method
 	private void k(int d) {
