@@ -9,7 +9,7 @@ public class XATranslator{
 	private String t;
 	private int c;
 	private HashMap<String, String> AB = new HashMap();
-    private HashMap<String, String> BA = new HashMap();
+	private HashMap<String, String> BA = new HashMap();
 	/*  XATRANSLATION PREPARE  */
 	//Prepare mode 1
 	public void prepare(){
@@ -19,8 +19,7 @@ public class XATranslator{
 	public void prepare(String a){
 		x = "abcdefghijklmnopqrstuvwxyz";
 		x += x.toUpperCase()+" ";
-		if(a!=null)
-			if(a.trim().length() >= 0) x += a;
+		if(a!=null) if(a.trim().length() >= 0) x += a;
 			else x += "'-";
 		else x +="'-";
 		x.replace("\n", "");
@@ -37,8 +36,7 @@ public class XATranslator{
 	//Load dictionary mode 3
 	public void loadDictionary(String d, boolean r, boolean j){
 		in = d.toLowerCase().trim();
-        if(!j)
-            if (r) BA.clear();
+        if(!j) if (r) BA.clear();
             else AB.clear();
         while (in.contains(";")) {
             w(subBefore(in, in.indexOf(";")+1).trim(), r);
@@ -123,16 +121,16 @@ public class XATranslator{
 			if (t.trim().contains(" ")) t = subBefore(t, t.lastIndexOf(" "));
 			else{
                 out.append(t);
-				o(h, t);
+				o(t);
 				break;
             }
-        in = subAfter(in, t.length());
-		if(h.containsKey(t.trim())) out = out.append(t.replace(t.trim(), h.get(t.trim())));
+		if(h.containsKey(t.trim())) out.append(t.replace(t.trim(), h.get(t.trim())));
+		in = subAfter(in, t.length());
 		k(0);
     }
 	//Step 4 Listing untranslated words
-	private void o(HashMap<String, String> h, String k){
-			y.add(k.trim().toLowerCase());
+	private void o(String k){
+		y.add(k.trim().toLowerCase());
 	}
 	//Step 5 Skip a/few/many/lot of letter that not listed in prepare() method
 	private void k(int d) {
