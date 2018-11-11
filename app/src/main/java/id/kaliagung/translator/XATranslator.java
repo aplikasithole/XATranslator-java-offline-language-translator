@@ -38,11 +38,22 @@ public class XATranslator{
 		in = d.toLowerCase().trim();
         if(!j) if (r) BA.clear();
             else AB.clear();
+		System.gc();
         while (in.contains(";")) {
             w(subBefore(in, in.indexOf(";")+1).trim(), r);
             in = subAfter(in, in.indexOf(";")+1).trim();
         }
         in = new String();
+	}
+	//Load dictionary mode 4
+	public void singleDictionary(String d){
+		loadDictionary(d, false, false);
+		loadDictionary(d, true, false);
+	}
+	//lod dictionary mode 5
+	public void singleDictionary(String d, boolean j){
+		loadDictionary(d, false, j);
+		loadDictionary(d, true, j);
 	}
 	//Translate in two direction directly with single short method.
 	//Recommended for onClick event
@@ -76,6 +87,13 @@ public class XATranslator{
 		System.gc();
 		return out.toString();
     }
+	//Translate for single ductionary
+	public String translateFrom(String p){
+		return translate(p, true);
+	}
+	public String translateTo(String p){
+		return translate(p, false);
+	}
 	//Get loaded word count
 	public int getWordCount(boolean r){
 		if(r) return BA.size()/3;
