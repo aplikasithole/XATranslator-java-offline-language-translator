@@ -22,6 +22,7 @@ public class Dictionary extends XATool{
 	private void d(HashMap<String, String> h, String f, String t){
 		g(h, f.toLowerCase(), t.toLowerCase());
 		g(h, cap(f), cap(t));
+		g(h, capWord(f), capWord(t));
 		g(h, f.toUpperCase(), t.toUpperCase());
 	}
 	//Step 4 Removing old word
