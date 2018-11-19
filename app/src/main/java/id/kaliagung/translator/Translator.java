@@ -15,7 +15,7 @@ public class Translator extends XATool{
 		y = new ArrayList<>();
 		a = h;
 		o = new StringBuilder();
-		t(a, change(p, "  ", " ").trim(), x);
+		t(a, change(change(p, "  ", " "), "\n\n\n", "\n\n").trim(), x);
 		return o.toString();
 	}
 	public ArrayList<String> newWords(){

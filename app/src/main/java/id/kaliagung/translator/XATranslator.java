@@ -59,8 +59,8 @@ public class XATranslator extends XATool{
 		y = new ArrayList<>();
 		if(x.length() > 0)
 			if(p.trim().length() >= 0)
-				if (r) return l.translate(BA, p.trim(), x);
-				else return l.translate(AB, p.trim(), x);
+				if (r) return l.translate(BA, p, x);
+				else return l.translate(AB, p, x);
 			else return p.trim();
 		else return p.trim();
     }
